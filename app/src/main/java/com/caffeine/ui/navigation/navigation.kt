@@ -10,14 +10,15 @@ import com.caffeine.ui.screens.HomeIntroScreen
 import com.caffeine.ui.screens.ThankYouScreen
 import com.caffeine.ui.screens.coffee_order.CoffeeOrderScreen
 import com.caffeine.ui.screens.coffee_ready.CoffeeReadyScreen
+import com.caffeine.ui.screens.snackpicker.SnackPickerScreen
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Pager : Screen("pager")
     object Order : Screen("order")
     object Ready : Screen("ready")
+    object SnackPicker : Screen("snack_picker") // NEW
     object ThankYou : Screen("thank_you")
-
 }
 
 
@@ -50,6 +51,15 @@ fun AppNavGraph(navController: NavHostController) {
             CoffeeReadyScreen(
                 onBackClicked = { navController.popBackStack() },
                 onContinueClicked = {
+                    navController.navigate(Screen.SnackPicker.route)
+                }
+            )
+        }
+
+        composable(Screen.SnackPicker.route) {
+            SnackPickerScreen(
+                onExitClick = { navController.popBackStack() },
+                onSnackClick = {
                     navController.navigate(Screen.ThankYou.route)
                 }
             )

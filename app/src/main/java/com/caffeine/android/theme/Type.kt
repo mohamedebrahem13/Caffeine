@@ -43,7 +43,12 @@ val Typography = Typography(
         fontSize = 22.sp,
         lineHeight = 28.sp
     ),
-
+    titleSmall = TextStyle(
+        fontFamily = Urbanist,
+        fontWeight = FontWeight.Bold,
+        fontSize = 24.sp,
+        lineHeight = 30.sp
+    ),
     // Urbanist Bold 20
     titleMedium = TextStyle(
         fontFamily = Urbanist,

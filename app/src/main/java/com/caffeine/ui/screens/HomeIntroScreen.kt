@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -42,16 +43,17 @@ fun HomeIntroScreen(onBringCoffeeClick: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-        .verticalScroll(rememberScrollState())
+            .verticalScroll(rememberScrollState())
             .navigationBarsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TopBarSection( modifier = Modifier.padding(top = 56.dp, bottom = 24.dp,start = 16.dp, end = 16.dp))
         GhostAndTextSection()
         ButtonWithIcon(
-            text = "bring my coffee",
+            text = stringResource(R.string.bring_my_coffee),
             icon = painterResource(id = R.drawable.coffee_02),
-            onClick = { onBringCoffeeClick }
+            onClick = {
+                onBringCoffeeClick() }
         )
     }
 }
@@ -127,7 +129,7 @@ fun GhostAndTextSection() {
             )
             Icon(
                 painter = painterResource(R.drawable.star),
-                contentDescription = "Stars",
+                contentDescription = stringResource(R.string.stars),
                 tint = Color.Black.copy(alpha = starAlpha),
                 modifier = Modifier
                     .size(16.dp)
@@ -135,7 +137,7 @@ fun GhostAndTextSection() {
             )
 
             Text(
-                text = "Hocus\nPocus\nI Need Coffee\nto Focus",
+                text = stringResource(R.string.hocus_pocus_i_need_coffee_to_focus),
                 style = MaterialTheme.typography.displayLarge,
                 textAlign = TextAlign.Center,
                 color = TextDarkGray.copy(alpha = 0.87f)
@@ -148,7 +150,7 @@ fun GhostAndTextSection() {
         ) {
             Image(
                 painter = painterResource(R.drawable.coffee_ghost),
-                contentDescription = "Ghost with Coffee",
+                contentDescription = stringResource(R.string.ghost_with_coffee),
                 modifier = Modifier
                     .graphicsLayer {
                         translationY = ghostOffsetY
@@ -158,7 +160,8 @@ fun GhostAndTextSection() {
             Image(
                 painter = painterResource(R.drawable.goast_shadow),
                 contentDescription = "Ghost Shadow",
-                modifier = Modifier.padding(bottom = 58.dp)
+                modifier = Modifier
+                    .padding(bottom = 58.dp)
                     .graphicsLayer {
                         translationY = shadowOffsetY
                         alpha = shadowAlpha

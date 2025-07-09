@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,7 +45,7 @@ val coffeeDrinks = listOf(
 
 @Composable
 fun CoffeePagerScreen(
-    onClick: (CoffeeDrink) -> Unit
+    onClick: () -> Unit
 ) {
     val pagerState = rememberPagerState(initialPage = 1) {
         coffeeDrinks.size
@@ -67,21 +68,21 @@ fun CoffeePagerScreen(
 
         Text(
             modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-            text = "Good Morning",
+            text = stringResource(R.string.good_morning),
             style = MaterialTheme.typography.displayMedium,
             color = LightGrayText
         )
 
         Text(
             modifier = Modifier.padding(start = 16.dp),
-            text = "Hamsa ☀",
+            text = stringResource(R.string.hamsa),
             style = MaterialTheme.typography.displayMedium,
             color = DarkGrayText
         )
 
         Text(
             modifier = Modifier.padding(start = 16.dp, bottom = 56.dp),
-            text = "What would you like to drink today?",
+            text = stringResource(R.string.what_would_you_like_to_drink_today),
             style = MaterialTheme.typography.bodyLarge,
             color = SubtleText
         )
@@ -102,9 +103,9 @@ fun CoffeePagerScreen(
             modifier = Modifier
                 .padding(bottom = 50.dp)
                 .align(Alignment.CenterHorizontally),
-            text = "Continue",
+            text = stringResource(R.string.continue_),
             icon = painterResource(R.drawable.arrow_right_04),
-            onClick = { onClick(coffeeDrinks[pagerState.currentPage]) }
+            onClick = { onClick() }
         )
     }
 }

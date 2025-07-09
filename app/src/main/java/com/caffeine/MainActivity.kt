@@ -1,15 +1,15 @@
 package com.caffeine
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.caffeine.android.theme.CaffeineTheme
-import com.caffeine.ui.screens.CoffeePagerScreen
+import com.caffeine.ui.navigation.AppNavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,13 +17,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CaffeineTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CoffeePagerScreen(
-                    ){
-                        selectedDrink ->
-                        Log.d("Coffee", "User selected: ${selectedDrink.name}")
-
-                    }
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    val navController = rememberNavController()
+                    AppNavGraph(navController = navController)
                 }
             }
         }

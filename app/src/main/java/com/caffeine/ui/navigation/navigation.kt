@@ -4,36 +4,65 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.caffeine.R
 import com.caffeine.ui.screens.CoffeePagerScreen
 import com.caffeine.ui.screens.HomeIntroScreen
+import com.caffeine.ui.screens.ThankYouScreen
 import com.caffeine.ui.screens.coffee_order.CoffeeOrderScreen
+import com.caffeine.ui.screens.coffee_ready.CoffeeReadyScreen
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Pager : Screen("pager")
     object Order : Screen("order")
+    object Ready : Screen("ready")
+    object ThankYou : Screen("thank_you")
+
 }
+
 
 @Composable
 fun AppNavGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = Screen.Home.route) {
+
         composable(Screen.Home.route) {
-            HomeIntroScreen(onBringCoffeeClick = {
-                navController.navigate(Screen.Pager.route)
-            })
+            HomeIntroScreen(
+                onBringCoffeeClick = { navController.navigate(Screen.Pager.route) }
+            )
         }
+
         composable(Screen.Pager.route) {
-            CoffeePagerScreen(onClick = {
-                navController.navigate(Screen.Order.route)
-            })
+            CoffeePagerScreen(
+                onClick = { navController.navigate(Screen.Order.route) }
+            )
         }
+
         composable(Screen.Order.route) {
             CoffeeOrderScreen(
-                onClickBack = {
-                    navController.popBackStack()
-                },
+                onClickBack = { navController.popBackStack() },
                 onNavigateToProcessing = {
+                    navController.navigate(Screen.Ready.route)
+                }
+            )
+        }
 
+        composable(Screen.Ready.route) {
+            CoffeeReadyScreen(
+                onBackClicked = { navController.popBackStack() },
+                onContinueClicked = {
+                    navController.navigate(Screen.ThankYou.route)
+                }
+            )
+        }
+
+        composable(Screen.ThankYou.route) {
+            ThankYouScreen(
+                selectedImageResId = R.drawable.cup_cake,
+                onExitClick = {
+                    navController.popBackStack(Screen.Home.route, inclusive = false)
+                },
+                onThankYouClick = {
+                    navController.popBackStack(Screen.Home.route, inclusive = false)
                 }
             )
         }

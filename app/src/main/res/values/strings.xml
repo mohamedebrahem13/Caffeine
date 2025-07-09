@@ -10,4 +10,19 @@
     <string name="hocus_pocus_i_need_coffee_to_focus">Hocus\nPocus\nI Need Coffee\nto Focus</string>
     <string name="stars">Stars</string>
     <string name="bring_my_coffee">bring my coffee</string>
+    <string name="coffee_cup">Coffee Cup</string>
+    <string name="your_coffee_is_ready_enjoy">Your coffee is ready,\nEnjoy</string>
+    <string name="cup_body">Cup Body</string>
+    <string name="take_away">Take Away</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
+    <string name="switch_coffee">Switch coffee</string>
+    <string name="ready">Ready</string>
+    <string name="coffee_lid">coffee lid</string>
+    <string name="take_snack">Take snack</string>
+    <string name="bon_app_tit">Bon appétit</string>
+    <string name="magic_wand">magic wand</string>
+    <string name="thank_youuu">Thank youuu</string>
+    <string name="more_espresso_less_depresso">More Espresso, Less Depresso</string>
+    <string name="snack">snack</string>
 </resources>

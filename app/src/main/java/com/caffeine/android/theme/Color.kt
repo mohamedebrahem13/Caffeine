@@ -12,3 +12,7 @@ val TextDarkGray = Color(0xFF1F1F1F)
 val LightGrayText = Color(0xFFB3B3B3)
 val DarkGrayText = Color(0xFF3B3B3B)
 val SubtleText = Color(0xCC1F1F1F)
+val SwitchTrackOnColor = Color(0xFF7C351B)
+val SwitchTrackOffColor = Color(0xFFFFEEE7)
+
+val shadowColor = Color(0x80B94B23)

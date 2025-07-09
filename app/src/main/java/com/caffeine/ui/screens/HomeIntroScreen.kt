@@ -65,7 +65,7 @@ fun GhostAndTextSection() {
         initialValue = 0f,
         targetValue = -32f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1500, easing = LinearEasing),
+            animation = tween(durationMillis = 800, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         ),
         label = "ghost_offset"
@@ -75,7 +75,7 @@ fun GhostAndTextSection() {
         initialValue = -12f,
         targetValue = 12f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1500, easing = LinearEasing),
+            animation = tween(durationMillis = 800, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         ),
         label = "shadow_offset"
@@ -85,7 +85,7 @@ fun GhostAndTextSection() {
         initialValue = 1f,
         targetValue = 0.5f,
         animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 1500, easing = LinearEasing),
+            animation = tween(durationMillis = 800, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         ),
         label = "shadow_alpha"
@@ -95,7 +95,7 @@ fun GhostAndTextSection() {
         initialValue = 0.12f,
         targetValue = 0.87f,
         animationSpec = infiniteRepeatable(
-            animation = tween(800),
+            animation = tween(durationMillis = 400),
             repeatMode = RepeatMode.Reverse
         )
     )

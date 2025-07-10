@@ -18,7 +18,9 @@ sealed class Screen(val route: String) {
     object Order : Screen("order")
     object Ready : Screen("ready")
     object SnackPicker : Screen("snack_picker") // NEW
-    object ThankYou : Screen("thank_you")
+    object ThankYou : Screen("thank_you/{snackId}") {
+        fun createRoute(snackId: Int) = "thank_you/$snackId"
+    }
 }
 
 
@@ -59,15 +61,17 @@ fun AppNavGraph(navController: NavHostController) {
         composable(Screen.SnackPicker.route) {
             SnackPickerScreen(
                 onExitClick = { navController.popBackStack() },
-                onSnackClick = {
-                    navController.navigate(Screen.ThankYou.route)
+                onSnackClick = { page ->
+                    navController.navigate(Screen.ThankYou.createRoute(page))
                 }
             )
         }
 
-        composable(Screen.ThankYou.route) {
+        composable(Screen.ThankYou.route) { backStackEntry ->
+            val snackId = backStackEntry.arguments?.getString("snackId")?.toIntOrNull() ?: R.drawable.cup_cake
+
             ThankYouScreen(
-                selectedImageResId = R.drawable.cup_cake,
+                selectedPageIndex = snackId,
                 onExitClick = {
                     navController.popBackStack(Screen.Home.route, inclusive = false)
                 },

@@ -25,7 +25,7 @@ import com.caffeine.android.theme.TextDarkGray
 @Composable
 fun SnackPickerScreen(
     onExitClick: () -> Unit,
-    onSnackClick: () -> Unit
+    onSnackClick: (Int) -> Unit
 ) {
     val snacks = listOf(
         R.drawable.chocolate,
@@ -46,7 +46,7 @@ fun SnackPickerScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(White)
-            .padding( start = 16.dp, end = 16.dp),
+            .padding(start = 16.dp, end = 16.dp),
         horizontalAlignment = Alignment.Start
     ) {
         Box(
@@ -69,9 +69,8 @@ fun SnackPickerScreen(
         Text(
             text = "Take your snack!",
             style = MaterialTheme.typography.titleLarge,
-            color =TextDarkGray.copy(alpha = 0.87f),
-            modifier = Modifier
-                .padding(top = 12.dp, bottom = 16.dp)
+            color = TextDarkGray.copy(alpha = 0.87f),
+            modifier = Modifier.padding(top = 12.dp, bottom = 16.dp)
         )
 
         CurvedSnackScrollPager(

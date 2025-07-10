@@ -39,10 +39,27 @@ import com.caffeine.ui.composable.ButtonWithIcon
 
 @Composable
 fun ThankYouScreen(
-    selectedImageResId: Int,
+    selectedPageIndex: Int,
     onExitClick: () -> Unit,
     onThankYouClick: () -> Unit
 ) {
+    val snacks = listOf(
+        R.drawable.chocolate,
+        R.drawable.biscuit,
+        R.drawable.cookies,
+        R.drawable.croissant,
+        R.drawable.cup_cake,
+        R.drawable.bun,
+        R.drawable.chocolate,
+        R.drawable.biscuit,
+        R.drawable.cookies,
+        R.drawable.croissant,
+        R.drawable.cup_cake,
+        R.drawable.bun
+    )
+
+    val selectedImageResId = snacks.getOrElse(selectedPageIndex) { R.drawable.cup_cake }
+
     var showButton by remember { mutableStateOf(false) }
     var showCancelButton by remember { mutableStateOf(false) }
 
